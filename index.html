@@ -166,24 +166,28 @@
 
       // input
       function keyDownEvent(e) {
-        switch (e.keyCode) {
-          case 37:
+        switch (e.code) {
+          case "ArrowLeft":
+          case "KeyA":
             nextX = -1;
             nextY = 0;
             break;
-          case 38:
+          case "ArrowUp":
+          case "KeyW":
             nextX = 0;
             nextY = -1;
             break;
-          case 39:
+          case "ArrowRight":
+          case "KeyD":
             nextX = 1;
             nextY = 0;
             break;
-          case 40:
+          case "ArrowDown":
+          case "KeyS":
             nextX = 0;
             nextY = 1;
             break;
-          case 32:
+          case "Space":
             if(gameActive == true) {
                 pauseGame();
             }
@@ -191,7 +195,10 @@
                 gameControl = startGame(x);
             }
             break;
+          default:
+            return;
         }
+        e.preventDefault();
       }
     </script>
   </body>
